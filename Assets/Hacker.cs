@@ -13,6 +13,8 @@ public class Hacker : MonoBehaviour {
     };
     int level;
     Screen currentScreen = Screen.MainMenu;
+
+    string[] passwords = { "donkey", "shrek" };
     
     // Use this for initialization
     void Start ()
@@ -40,6 +42,22 @@ public class Hacker : MonoBehaviour {
         else if (currentScreen == Screen.MainMenu)
         {
             RunMainMenu(input);
+        }
+        else if (currentScreen == Screen.Password)
+        {
+            RunPassword(input);
+        }
+    }
+
+    private void RunPassword(string input)
+    {
+        if (input == passwords[level - 1])
+        {
+            Terminal.WriteLine("Congrasturbations!");
+        }
+        else
+        {
+            Terminal.WriteLine("Wrong again, buffalo breath!");
         }
     }
 
