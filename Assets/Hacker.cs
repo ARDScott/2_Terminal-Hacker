@@ -2,7 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hacker : MonoBehaviour {
+public class Hacker : MonoBehaviour
+{
+    // Game configuration data
+    string[][] passwords = {
+        new string[] { "books", "aisle", "shelf", "password", "font", "borrow" },
+        new string[] { "prisoner", "handcuffs", "holster", "uniform", "arrest", "criminal" },
+        new string[] { "starfield", "telescope", "environment", "exploration", "astronauts", "cosmonauts" }
+    };
 
     // Game state
     enum Screen
@@ -13,9 +20,8 @@ public class Hacker : MonoBehaviour {
     };
     int level;
     Screen currentScreen = Screen.MainMenu;
+    string password;
 
-    string[] passwords = { "donkey", "shrek" };
-    
     // Use this for initialization
     void Start ()
     {
@@ -51,7 +57,7 @@ public class Hacker : MonoBehaviour {
 
     private void RunPassword(string input)
     {
-        if (input == passwords[level - 1])
+        if (input == passwords[level - 1][0]) // TODO: Make random later
         {
             Terminal.WriteLine("Congrasturbations!");
         }
@@ -63,6 +69,11 @@ public class Hacker : MonoBehaviour {
 
     private void RunMainMenu(string input)
     {
+        bool isValidLevelNumber = (input == "1" || input == "2" || input == "3");
+        if (isValidLevelNumber)
+        {
+            level = int.Parse(input);
+        }
         if (input == "1")
         {
             level = 1;
