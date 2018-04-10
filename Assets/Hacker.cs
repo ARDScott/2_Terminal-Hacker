@@ -46,6 +46,11 @@ public class Hacker : MonoBehaviour
         {
             ShowMainMenu();
         }
+        else if (input.ToLower() == "quit" || input.ToLower() == "close" || input.ToLower() == "exit")
+        {
+            Terminal.WriteLine("If on the web, close the tab.");
+            Application.Quit();
+        }
         else if (currentScreen == Screen.MainMenu)
         {
             RunMainMenu(input);
@@ -82,6 +87,7 @@ public class Hacker : MonoBehaviour
         {
             case 0:
                 Terminal.WriteLine("No more overdue books...");
+                Terminal.WriteLine("Play again for a greater challenge!");
                 Terminal.WriteLine(@"
     _______
    /      //
@@ -90,10 +96,10 @@ public class Hacker : MonoBehaviour
 (______(/
 "
                 );
-                Terminal.WriteLine("Play again for a greater challenge!");
                 break;
             case 1:
                 Terminal.WriteLine("Good work, you've earned this!");
+                Terminal.WriteLine("Play again for a greater challenge!");
                 Terminal.WriteLine(@"
    ____
 .'` __ `'.
@@ -102,10 +108,10 @@ public class Hacker : MonoBehaviour
  `------`
 "
                 );
-                Terminal.WriteLine("Play again for a greater challenge!");
                 break;
             case 2:
                 Terminal.WriteLine("Welcome to NASA's internal system!");
+                Terminal.WriteLine("Play again for a greater challenge!");
                 Terminal.WriteLine(@"
  ()    .-.,='``'=.      |  
        '=/_       \   - o -
@@ -114,7 +120,6 @@ public class Hacker : MonoBehaviour
       .   '=.__.=' `= '      *
 "
                 );
-                Terminal.WriteLine("Play again for a greater challenge!");
                 break;
             default:
                 Debug.Log("Invalid level reached");
