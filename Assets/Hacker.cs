@@ -5,6 +5,7 @@ using UnityEngine;
 public class Hacker : MonoBehaviour
 {
     // Game configuration data
+    const string menuHint = "You may type menu at any time.";
     string[][] passwords = {
         new string[] { "books", "aisle", "shelf", "password", "font", "borrow" },
         new string[] { "prisoner", "handcuffs", "holster", "uniform", "arrest", "criminal" },
@@ -35,7 +36,7 @@ public class Hacker : MonoBehaviour
         Terminal.WriteLine("What would you like to hack into?\n");
         Terminal.WriteLine("Press 1 for the local library");
         Terminal.WriteLine("Press 2 for the police station");
-        Terminal.WriteLine("Press 3 for the NASA\n");
+        Terminal.WriteLine("Press 3 for NASA\n");
         Terminal.WriteLine("Enter your selection:");
     }
     
@@ -72,6 +73,7 @@ public class Hacker : MonoBehaviour
         currentScreen = Screen.Win;
         Terminal.ClearScreen();
         ShowLevelReward();
+        Terminal.WriteLine(menuHint);
     }
 
     private void ShowLevelReward()
@@ -79,7 +81,7 @@ public class Hacker : MonoBehaviour
         switch (level)
         {
             case 0:
-                Terminal.WriteLine("Have a book...");
+                Terminal.WriteLine("No more overdue books...");
                 Terminal.WriteLine(@"
     _______
    /      //
@@ -88,9 +90,10 @@ public class Hacker : MonoBehaviour
 (______(/
 "
                 );
+                Terminal.WriteLine("Play again for a greater challenge!");
                 break;
             case 1:
-                Terminal.WriteLine("Have a donut...");
+                Terminal.WriteLine("Good work, you've earned this!");
                 Terminal.WriteLine(@"
    ____
 .'` __ `'.
@@ -99,20 +102,19 @@ public class Hacker : MonoBehaviour
  `------`
 "
                 );
+                Terminal.WriteLine("Play again for a greater challenge!");
                 break;
             case 2:
-                Terminal.WriteLine("Have a planet...");
+                Terminal.WriteLine("Welcome to NASA's internal system!");
                 Terminal.WriteLine(@"
-                 *       +
-           '                  |
-       ()    .-.,='``'=.    - o -
-             '=/_       \     |
-          *   | '=._    |
-               \     `=./`, '
-            .   '=.__.=' `= '      *
-   + +
+ ()    .-.,='``'=.      |  
+       '=/_       \   - o -
+    *   | '=. _    |    |
+         \     `=./`, '
+      .   '=.__.=' `= '      *
 "
                 );
+                Terminal.WriteLine("Play again for a greater challenge!");
                 break;
             default:
                 Debug.Log("Invalid level reached");
@@ -135,6 +137,7 @@ public class Hacker : MonoBehaviour
         else
         {
             Terminal.WriteLine("Please choose a valid level.");
+            Terminal.WriteLine(menuHint);
         }
     }
 
@@ -144,6 +147,7 @@ public class Hacker : MonoBehaviour
         Terminal.ClearScreen();
         SetRandomPassword();
         Terminal.WriteLine("Enter your password, hint: " + password.Anagram());
+        Terminal.WriteLine(menuHint);
     }
 
     private void SetRandomPassword()
